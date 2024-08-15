@@ -1,0 +1,47 @@
+[package]
+name = "pallet-dao-assets"
+version = "4.0.0-dev"
+authors = ["chp"]
+edition = "2021"
+license = "Apache-2.0"
+homepage = "https://deep-ink.ventures"
+repository = "https://github.com/deep-ink-ventures/genesis-dao/"
+description = "FRAME dao assets"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false }
+frame-benchmarking = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0", optional = true }
+frame-support = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }
+frame-system = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }
+scale-info = { version = "2.1.1", default-features = false, features = [
+	"derive",
+] }
+sp-std = { version = "8.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }
+pallet-balances = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }
+pallet-dao-core = { path = "../dao-core/", default-features = false }
+commons = { path = "../../commons", default-features = false }
+
+[dev-dependencies]
+sp-core = { version = "21.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }
+sp-io = { version = "23.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }
+sp-runtime = { version = "24.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }
+
+[features]
+default = ["std"]
+std = [
+	"codec/std",
+	"frame-support/std",
+	"frame-system/std",
+	"frame-benchmarking?/std",
+	"scale-info/std",
+	"sp-std/std",
+	"sp-runtime/std",
+	"pallet-balances/std",
+  "pallet-dao-core/std",
+	"commons/std"
+]
+runtime-benchmarks = ["frame-benchmarking/runtime-benchmarks"]
+try-runtime = ["frame-support/try-runtime"]

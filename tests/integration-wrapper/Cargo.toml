@@ -1,0 +1,14 @@
+[package]
+name = "integration_wrapper"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+doctest = false
+
+[dependencies]
+parity-scale-codec = "3.3.0"
+sp-keyring = "18.0.0" # needs to match the sp-core version used in subxt?
+subxt = "0.27.1"
+tokio = "1.26.0"
